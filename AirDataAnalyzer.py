@@ -83,7 +83,7 @@ class DataSet:
                 {i[category.value]: True for i in self._data}
 
     def load_file(self):
-        """ Load the data from the Purple Air data file into self._data
+        """ Load the data from the Air data file into self._data
         and return number of lines in data.
         """
         with open(filename, 'r', newline='') as air_file:
@@ -316,22 +316,20 @@ def manage_filters(dataset: DataSet, category: DataSet.Categories):
 
 
 def main():
-    """ Obtain the user's name, and return a polite greeting. Print the
-    toppings' menu, and handle the user's input. Create DataSet
-    instance. Ask user for valid header.
+    """ Obtain the user's name and print the menu.
     """
     username = input("Hello, please enter your name: ")
-    print("Welcome, " + username + ", to the Air Quality database.")
+    print(f"Welcome, {username} to the Air Data Analyzer.")
     while True:
         header = input("Please enter a header: ")
         try:
-            purple_air = DataSet(header)
+            air_data = DataSet(header)
             break
         except TypeError:
             print("Please enter a string only.")
         except ValueError:
             print("Please enter a string of 30 characters or less.")
-    menu(purple_air)
+    menu(air_data)
 
 
 if __name__ == "__main__":
